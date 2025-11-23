@@ -25,12 +25,23 @@ export default function Hero({ meta }: HeroProps) {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
+  
+  // Transition from white/sand to Day 1 amber/yellow
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.8, 1],
+    ['rgb(254, 249, 240)', 'rgb(254, 243, 199)', 'rgb(254, 243, 199)'] // sand-50 → amber-100
+  )
 
   return (
     <section 
-      ref={ref} 
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-sand-100 via-sand-50 to-transparent px-8 py-24 overflow-hidden"
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center px-8 py-24 overflow-hidden"
     >
+      <motion.div
+        style={{ backgroundColor }}
+        className="absolute inset-0 -z-10"
+      />
       <motion.div 
         style={{ opacity, scale, y }}
         className="max-w-5xl mx-auto text-center relative z-10"
