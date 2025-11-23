@@ -83,18 +83,18 @@ export default function DayEntry({ day, index }: DayEntryProps) {
     <article
       id={day.id}
       ref={ref}
-      className={`relative px-8 py-24 bg-gradient-to-br ${theme.gradient} overflow-hidden`}
+      className="relative px-8 py-24 overflow-hidden"
     >
-      {/* Animated background orbs */}
+      {/* Animated accent orbs */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 0.15, scale: 1 } : {}}
+        animate={isInView ? { opacity: 0.2, scale: 1 } : {}}
         transition={{ duration: 2, delay: 0.3 }}
         className={`absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br ${theme.accent} rounded-full blur-3xl pointer-events-none`}
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 0.1, scale: 1 } : {}}
+        animate={isInView ? { opacity: 0.15, scale: 1 } : {}}
         transition={{ duration: 2, delay: 0.5 }}
         className={`absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br ${theme.accent} rounded-full blur-3xl pointer-events-none`}
       />

@@ -1,20 +1,50 @@
+'use client'
+
 import Hero from '@/components/Hero'
 import Timeline from '@/components/Timeline'
 import DayEntry from '@/components/DayEntry'
 import travelData from '@/data/travelLog.json'
 import Link from 'next/link'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function Home() {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  })
+
+  // Define color stops for each day
+  const colorStops = [
+    '#fef3c7', // Day 1 - Amber/Yellow
+    '#dbeafe', // Day 2 - Blue
+    '#f3e8ff', // Day 3 - Purple
+    '#d1fae5', // Day 4 - Emerald
+    '#fee2e2', // Day 5 - Red/Rose
+  ]
+
+  // Create smooth color transitions
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [colorStops[0], colorStops[0], colorStops[1], colorStops[2], colorStops[3], colorStops[4]]
+  )
+
   return (
     <main className="relative">
       <Hero meta={travelData.meta} />
       <Timeline days={travelData.days} />
       
-      <div className="relative">
+      <motion.div 
+        ref={containerRef}
+        style={{ backgroundColor }}
+        className="relative transition-colors duration-1000"
+      >
         {travelData.days.map((day, index) => (
           <DayEntry key={day.id} day={day} index={index} />
         ))}
-      </div>
+      </motion.div>
       
       {/* Footer */}
       <footer className="relative bg-slate-900 text-sand-100 py-24 px-8 overflow-hidden">
