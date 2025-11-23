@@ -106,7 +106,7 @@ export default function Hero({ meta }: HeroProps) {
               dayOne.scrollIntoView({ behavior: 'smooth', block: 'start' })
             }
           }}
-          className="group flex flex-col items-center gap-2 cursor-pointer relative px-8 py-4 rounded-full hover:bg-sage-100/50 transition-all duration-300"
+          className="group flex flex-col items-center gap-2 cursor-pointer relative px-8 py-4 rounded-full hover:bg-sage-100/50 transition-all duration-300 mx-auto"
         >
           <span className="text-xs uppercase tracking-widest text-slate-500 group-hover:text-sage-700 transition-colors">
             Begin Journey
