@@ -34,13 +34,13 @@ export default function Home() {
   return (
     <main className="relative">
       <Hero meta={travelData.meta} />
-      <Timeline days={travelData.days} />
       
       <motion.div 
         ref={containerRef}
         style={{ backgroundColor }}
         className="relative transition-colors duration-1000"
       >
+        <Timeline days={travelData.days} />
         {travelData.days.map((day, index) => (
           <DayEntry key={day.id} day={day} index={index} />
         ))}

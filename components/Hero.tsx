@@ -26,11 +26,11 @@ export default function Hero({ meta }: HeroProps) {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   
-  // Transition from white/sand to Day 1 amber/yellow
+  // Transition from white/sand to Day 1 amber/yellow - more gradual
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.8, 1],
-    ['rgb(254, 249, 240)', 'rgb(254, 243, 199)', 'rgb(254, 243, 199)'] // sand-50 → amber-100
+    [0, 0.3, 0.6, 1],
+    ['rgb(254, 249, 240)', 'rgb(254, 246, 220)', 'rgb(254, 245, 210)', 'rgb(254, 243, 199)'] // sand-50 → amber-100
   )
 
   return (
